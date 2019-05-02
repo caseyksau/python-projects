@@ -1,4 +1,4 @@
-import math
+mem = [] # trying to limit list to a set length
 
 def sum(a,b):
 	return a + b
@@ -15,32 +15,55 @@ def div(a,b):
 def result(num1,oper,num2):
 
 	if oper == '+':
-		print(sum(num1,num2))
+		print(num1, oper, num2, '=', sum(num1,num2),'\n\n')
+		mem.insert(0,sum(num1,num2))
 	elif oper == '-':
-		print(sub(num1,num2))
+		print(num1, oper, num2, '=', sub(num1,num2),'\n\n')
+		mem.insert(0,sub(num1,num2))
 	elif oper == '/':
-		print(div(num1,num2))
+		print(num1, oper, num2, '=', div(num1,num2),'\n\n')
+		mem.insert(0,div(num1,num2))
 	elif oper == '*':
-		print(mult(num1,num2))
+		print(num1, oper, num2, '=', mult(num1,num2),'\n\n')
+		mem.insert(0,mult(num1,num2))
 	else:
 		print('this is invalid')
 
 def init():
-	print('This is my simple calculator')
+	print("This is my simple calculator, to exit, press 'ctrl + d'")
 
-	num1 = input('Enter first number: ')
+	# getting FIRST #
+	if len(mem) == 0:
+		num1 = input('Enter first number:\n')
+	else:
+		# print array memory
+		print('Memory: ',mem)
+		num1 = input("Enter number or \npress 'r' for last result\n")
 	while not num1.isdigit():
-		num1 = input('Must be a #, Enter first number: ')
+		if num1 == 'r':
+			num1 = mem[0]
+			print(num1)
+			break
+		if len(mem) == 0:
+			num1 = input('Must be a #, Enter first number:\n')
+		else:
+			num1 = input("Must be a #, Enter first number or press 'r' for last result\n")
 
-	oper = input('Enter operator (+,-,*,/): ')
-	if not oper == '+' or oper == '-' or oper == '*' or oper == '/':
-		oper = input('invalid entry, must be an operator: ')
+	# getting OPERATOR
+	oper = input('Enter operator (+,-,*,/):\n')
+	while oper not in ('+','-','*','/'):
+		oper = input('invalid entry, must be an operator:\n')
 
-	num2 = input('Enter second number: ')
+	# getting SECOND #
+	num2 = input('Enter second number:\n')
 	while not num2.isdigit():
-		num2 = input('Must be a #, Enter first number: ')
+		num2 = input('Must be a #, Enter second number:\n')
 
+	# returning results
 	result(int(num1), oper, int(num2))
+
+	# re-running calculator
+	init()
 
 
 init()
