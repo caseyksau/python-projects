@@ -68,3 +68,10 @@ def init():
 
 init()
 
+'''
+Questions
+- how do you set a limited length to a list / array?
+- Does function order matter?
+
+'''
+
