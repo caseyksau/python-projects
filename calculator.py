@@ -33,7 +33,7 @@ def init():
 		num1 = input('Must be a #, Enter first number: ')
 
 	oper = input('Enter operator (+,-,*,/): ')
-	while not oper == '+' or oper == '-' or oper == '*' or oper == '/':
+	if not oper == '+' or oper == '-' or oper == '*' or oper == '/':
 		oper = input('invalid entry, must be an operator: ')
 
 	num2 = input('Enter second number: ')
