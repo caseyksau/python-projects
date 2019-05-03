@@ -38,7 +38,7 @@ def init():
 	else:
 		# print array memory
 		print('Memory: ',mem)
-		num1 = input("Enter number or \npress 'r' for last result\n")
+		num1 = input("Enter number or \npress 'r' for last result:\n")
 	while not num1.isdigit():
 		if num1 == 'r':
 			num1 = mem[0]
@@ -47,7 +47,7 @@ def init():
 		if len(mem) == 0:
 			num1 = input('Must be a #, Enter first number:\n')
 		else:
-			num1 = input("Must be a #, Enter first number or press 'r' for last result\n")
+			num1 = input("Must be a #, Enter first number or press 'r' for last result:\n")
 
 	# getting OPERATOR
 	oper = input('Enter operator (+,-,*,/):\n')
@@ -55,9 +55,19 @@ def init():
 		oper = input('invalid entry, must be an operator:\n')
 
 	# getting SECOND #
-	num2 = input('Enter second number:\n')
+	if len(mem) == 0:
+		num2 = input('Enter second number:\n')
+	else:
+		num2 = input("Enter number or \npress 'r' for last result:\n")
 	while not num2.isdigit():
-		num2 = input('Must be a #, Enter second number:\n')
+		if num2 == 'r':
+			num2 = mem[0]
+			print(num2)
+			break
+		if len(mem) == 0:
+			num2 = input('Must be a #, Enter second number:\n')
+		else:
+			num2 = input("Must be a #, Enter second number or press 'r' for last result:\n")
 
 	# returning results
 	result(int(num1), oper, int(num2))
@@ -72,6 +82,8 @@ init()
 Questions
 - how do you set a limited length to a list / array?
 - Does function order matter?
-
+- how can i check multiple conditions for variable type?
+  for instance, if num1 is float or num1 is int, accept, else try again
+- print(), how to control spacing between a text and a variable
 '''
 
